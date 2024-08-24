@@ -2,6 +2,7 @@
 using ChatStuff.Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
+
 namespace ChatStuff.Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
@@ -17,7 +18,7 @@ namespace ChatStuff.Infrastructure.Repositories
 
         public async Task<IdentityResult> RegisterAsync(string username, string password)
         {
-            return await _userManager.CreateAsync (new ChatStuffUser() { UserName = username}, password).ConfigureAwait(false);
+            return await _userManager.CreateAsync(new ChatStuffUser() { UserName = username}, password).ConfigureAwait(false);
         }
 
         public async Task<SignInResult> LoginAsync(string username, string password)

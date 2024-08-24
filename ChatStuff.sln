@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatStuff.Web", "ChatStuff.Web\ChatStuff.Web.csproj", "{EAACE082-E57B-42D7-910C-AAD27BFEA7A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatStuff.API", "ChatStuff.API\ChatStuff.API.csproj", "{EAACE082-E57B-42D7-910C-AAD27BFEA7A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{00ECD601-AAA6-44AA-BAFF-98E927FE52CA} = {00ECD601-AAA6-44AA-BAFF-98E927FE52CA}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatStuff.Core", "ChatStuff.Core\ChatStuff.Core.csproj", "{73DEE599-0694-452D-9660-557364F79D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatStuff.Core", "ChatStuff.Core\ChatStuff.Core.csproj", "{73DEE599-0694-452D-9660-557364F79D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatStuff.Infrastructure", "ChatStuff.Infrastructure\ChatStuff.Infrastructure.csproj", "{00ECD601-AAA6-44AA-BAFF-98E927FE52CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatStuff.Infrastructure", "ChatStuff.Infrastructure\ChatStuff.Infrastructure.csproj", "{00ECD601-AAA6-44AA-BAFF-98E927FE52CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{73DEE599-0694-452D-9660-557364F79D61} = {73DEE599-0694-452D-9660-557364F79D61}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
