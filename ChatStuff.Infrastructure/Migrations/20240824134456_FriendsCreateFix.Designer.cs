@@ -3,6 +3,7 @@ using System;
 using ChatStuff.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChatStuff.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240824134456_FriendsCreateFix")]
+    partial class FriendsCreateFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,31 +24,6 @@ namespace ChatStuff.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("ChatStuff.Core.Entities.Blocks", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("SourceUserName")
-                        .IsRequired()
-                        .HasColumnType("character varying(256)");
-
-                    b.Property<string>("TargetUserName")
-                        .IsRequired()
-                        .HasColumnType("character varying(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SourceUserName");
-
-                    b.HasIndex("TargetUserName");
-
-                    b.ToTable("Blocks");
-                });
 
             modelBuilder.Entity("ChatStuff.Core.Entities.ChatStuffUser", b =>
                 {
@@ -292,23 +270,6 @@ namespace ChatStuff.Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ChatStuff.Core.Entities.Blocks", b =>
-                {
-                    b.HasOne("ChatStuff.Core.Entities.ChatStuffUser", null)
-                        .WithMany()
-                        .HasForeignKey("SourceUserName")
-                        .HasPrincipalKey("UserName")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ChatStuff.Core.Entities.ChatStuffUser", null)
-                        .WithMany()
-                        .HasForeignKey("TargetUserName")
-                        .HasPrincipalKey("UserName")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ChatStuff.Core.Entities.FriendRequest", b =>
