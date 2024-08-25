@@ -9,13 +9,11 @@ namespace ChatStuff.Core.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly ITokenClaimsService _tokenClaimsService;
-        private readonly UserManager<ChatStuffUser> _userManager;
 
-        public UserServices(IUserRepository userRepository, ITokenClaimsService tokenClaimsService, UserManager<ChatStuffUser> userManager)
+        public UserServices(IUserRepository userRepository, ITokenClaimsService tokenClaimsService)
         {
             _userRepository = userRepository;
             _tokenClaimsService = tokenClaimsService;
-            _userManager = userManager;
         }
 
         public async Task<OperationResult<string>> RegisterUserAsync(string userName, string password)
@@ -45,5 +43,7 @@ namespace ChatStuff.Core.Services
         {
             return await _userRepository.GetUserAsync(userId).ConfigureAwait(false);
         }
+
+        
     }
 }

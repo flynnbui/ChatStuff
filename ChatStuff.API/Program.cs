@@ -54,6 +54,8 @@ builder.Services.AddAuthentication(config =>
 // Register Dependencies
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IFriendRepository, FriendRepository>();
+builder.Services.AddScoped<IFriendServices, FriendService>();
 builder.Services.AddScoped<ITokenClaimsService, TokenClaimsService>();
 
 var app = builder.Build();
